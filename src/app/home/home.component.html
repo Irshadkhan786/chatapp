@@ -1,0 +1,153 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Business Login Form Responsive Widget Template :: w3layouts</title>
+ <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Business Login Form a Responsive Web Template, Bootstrap Web Templates, Flat Web Templates, Android Compatible Web Template, Smartphone Compatible Web Template, Free Webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design">
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //Meta-Tags -->
+	
+	<!-- css files -->
+	<!-- <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" media="all"> -->
+	<!-- <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/> -->
+	<!-- //css files -->
+	
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+	<!-- //google fonts -->
+    <style>
+    .checkbox input + i:after {
+    content: url(../images/tick.png);
+    top: 0px;
+    left: 2px;
+}
+/* input[type="checkbox" i] {
+    display: none;
+} */
+    </style>
+</head>
+<body>
+
+<div class="signupform">
+	<div class="container">
+		<!-- main content -->
+		<div class="agile_info">
+			<div class="w3l_form">
+				<div class="left_grid_info">
+					<h1>Welcome to Socialsiyappa</h1>
+					<p>Donec dictum nisl nec mi lacinia, sed maximus tellus eleifend. Proin molestie cursus sapien ac eleifend.</p>
+					<img src="assets/img/image.jpg" alt="" />
+				</div>
+            </div>
+            
+			<div class="w3_info" *ngIf="!loginForm">
+                    <div *ngIf="registerSubmitError.status==1" style="padding: 10px" class="text-center alert alert-danger">
+                            {{registerSubmitError.error}}
+                    </div>
+                    <div *ngIf="!registerSubmitError.status =='success'" style="padding: 10px" class="text-center alert alert-success">
+                            {{registerSubmitError.error}}
+                    </div>
+				<h2>Create your Account</h2>
+				<p>Enter your details for signup.</p>
+				<form [formGroup]="regForm" (ngSubmit)="regUser()">
+					
+					<div class="form-group">
+                        <input type="text" class="form-control" formControlName="name" style="margin-bottom:15px;padding: 20px 13px;" placeholder="Enter name" id="name">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="regForm.get('name').touched  && regForm.get('name').errors">
+                            <span  *ngIf="regForm.get('name').errors.required">Name is required</span>
+                            <span  *ngIf="regForm.get('name').errors.minlength"> Minimum {{regForm.get('name').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" formControlName="email" style="margin-bottom:15px; padding: 20px 13px;" class="form-control" placeholder="Enter email" id="email">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="regForm.get('email').touched  && regForm.get('email').errors">
+                            <span *ngIf="regForm.get('email').errors.required">Email is required</span>
+                            <span *ngIf="regForm.get('email').errors.minlength"> Minimum {{regForm.get('email').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                            <input type="text" class="form-control" formControlName="contact" style="margin-bottom:15px;padding: 20px 13px;" placeholder="Enter contact" id="contact">
+                            <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="regForm.get('contact').touched  && regForm.get('contact').errors">
+                                <span *ngIf="regForm.get('contact').errors.required">Contct is required</span>
+                                <span *ngIf="regForm.get('contact').errors.minlength"> Minimum {{regForm.get('contact').errors.minlength.requiredLength}} digits are required.</span>
+                            </span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" class="form-control" formControlName="password" style="margin-bottom:15px;padding: 20px 13px;" placeholder="Enter password" id="password">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="regForm.get('password').touched  && regForm.get('password').errors">
+                            <span *ngIf="regForm.get('password').errors.required">Password is required</span>
+                            <span *ngIf="regForm.get('password').errors.minlength"> Minimum {{regForm.get('password').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" formControlName="cnf_password" class="form-control" style="margin-bottom:15px;padding: 20px 13px;" placeholder="Enter confirm password" id="cnf_password">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="regForm.get('cnf_password').touched  && regForm.get('cnf_password').errors">
+                            <span *ngIf="regForm.get('cnf_password').errors.required">Confirm Password is required</span>
+                            <span *ngIf="regForm.get('cnf_password').errors.minlength"> Minimum {{regForm.get('cnf_password').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>					
+						<button class="btn btn-danger btn-block" type="submit">Signup</button >                
+				</form>
+				<p class="account">By clicking Signup, you agree to our <a href="#">Terms & Conditions!</a></p>
+				<p class="account1">Already have an account? <a style="cursor:pointer" (click)="changeForm('login')">Login here</a></p>
+            </div>
+            <!-- login div-->
+            <div class="w3_info" *ngIf="loginForm">
+                    <div *ngIf="loginSubmitError.status==1" style="padding: 10px" class="text-center alert alert-danger">
+                            {{loginSubmitError.error}}
+                    </div>
+                <h2>Login into your Account</h2>
+				<p>Enter your details for login.</p>
+                <form [formGroup]="signinForm"  (ngSubmit)="doLogin()">
+					
+					<div class="form-group">
+                        <input type="email" class="form-control" formControlName="loginemail" style="margin-bottom:15px;padding: 20px 13px;" placeholder="Enter email" id="email">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="signinForm.get('loginemail').touched && signinForm.get('loginemail').errors">
+                            <span *ngIf="signinForm.get('loginemail').errors.required">Email is required.</span>
+                            <span *ngIf="signinForm.get('loginemail').errors.minlength"> Minimum {{signinForm.get('loginemail').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password"  formControlName="loginpassword" style="margin-bottom:15px; padding: 20px 13px;" class="form-control" placeholder="Enter password" id="password">
+                        <span class="error text-danger" style="color:red;font-size:15px;" *ngIf="signinForm.get('loginpassword').touched && signinForm.get('loginpassword').errors">
+                            <span *ngIf="signinForm.get('loginpassword').errors.required">Password is required.</span>
+                            <span *ngIf="signinForm.get('loginpassword').errors.minlength"> Minimum {{signinForm.get('loginpassword').errors.minlength.requiredLength}} characters are required.</span>
+                        </span>
+                    </div>
+                    <button class="btn btn-danger btn-block" type="submit">Login</button >  
+                    <p class="account1">Don't have an account? <a style="cursor:pointer" (click)="changeForm('signup')">Click here</a></p>
+                </form>
+            </div>
+            <!-- login div ends here-->
+		</div>
+		<!-- //main content -->
+	</div>
+    <!-- footer -->
+    
+	<div class="footer">
+		<p>&copy; 2019 Socialsiyappa. All Rights Reserved | Design by <a href="#" target="blank">Soacialsiyappa</a></p>
+	</div>
+	<!-- footer -->
+</div>
+	
+</body>
+</html>
