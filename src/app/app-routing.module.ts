@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,9 +7,11 @@ import {Home} from './home/home.component';
 import {Chat} from './chat/chat.component';
 import {About} from './chat/about.component';
 
+/*== import service ===*/
+import { LoginGaurd } from './services/login-gaurd.service'
 const routes: Routes = [
   {path:'',component:Home},
-  {path:'chat',component:Chat},
+  {path:'chat',component:Chat,canActivate:[LoginGaurd]},
   {path:'about',component:About},
   {path:'**',component:Home},
 ];

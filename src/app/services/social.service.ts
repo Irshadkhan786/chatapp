@@ -6,10 +6,11 @@ import { retry, catchError } from 'rxjs/operators';
 @Injectable()
 export class Socialservice {
 
-    public base_url = "http://ec2-52-66-251-245.ap-south-1.compute.amazonaws.com:5000/";
-    //public base_url = "http://localhost:5000/";
+    //public base_url = "http://ec2-52-66-251-245.ap-south-1.compute.amazonaws.com:5000/";
+    public base_url = "http://localhost:5000/";
     private signupUrl:string = this.base_url+"signup";
     private signinUrl:string = this.base_url+"login";
+    private tokenVarifyUrl:string = this.base_url+"varifyToken";
     constructor(private http:HttpClient){
 
     }
@@ -21,6 +22,11 @@ export class Socialservice {
 
     login(data){
         return  this.http.post<any>(this.signinUrl,data,{ observe: 'response' })
+      .pipe(retry(1),catchError(this.errorHandler));
+    }
+
+    varifyAuthToken(){
+        return  this.http.get<any>(this.tokenVarifyUrl,{ observe: 'response' })
       .pipe(retry(1),catchError(this.errorHandler));
     }
     private errorHandler(error){

@@ -26,7 +26,10 @@ export class Home{
     })
 
     constructor(private service:Socialservice,private router:Router){
-
+        if(localStorage.getItem('loginToken')){
+            console.log(localStorage.getItem('loginToken'));
+            this.router.navigate(['/chat'])
+        }
     }
     changeForm(formType){
         
@@ -58,12 +61,14 @@ export class Home{
         }
         let loginData = {email,password};
         this.service.login(loginData).subscribe((succRes)=>{
-            console.log(succRes)
+            
+            
             if(succRes.status == 200){
                 let resData = succRes.body.res;
                 let name = resData.name;
                 let email = resData.email;
-                let loginToken = resData.headers.get('x-auth');
+                let loginToken = succRes.headers.get('x-auth');
+                console.log(loginToken);
                 let userid = resData._id;
                 localStorage.setItem('name',name);
                 localStorage.setItem('email',email);
